@@ -1,5 +1,6 @@
 export const ADD_TODO = 'ADD_TODO'
 export const SET_COMPLETED = 'SET_COMPLETED'
+export const CLEAR_TODO = 'CLEAR_TODO'
 
 
 const addTodo = (item) => {
@@ -11,9 +12,12 @@ const setCompleted = (id) => {
     return({type:SET_COMPLETED, payload:id})
 }
 
+const clearTodo = () => {
+    return({type:CLEAR_TODO})
+}
 
 export default {
     addTodo:addTodo,
     setCompleted:setCompleted,
-
+    clearTodo:clearTodo,
 }

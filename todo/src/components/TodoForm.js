@@ -16,7 +16,7 @@ export default function TodoForm(props) {
 
     const clearTodo = (e) => {
         e.preventDefault()
-
+        dispatch(actions.clearTodo())
     }
 
     return (
