@@ -1,7 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 
+const initialState = {
+  item: 'Learn about reducers',
+  completed: false,
+  id: 3892987589,
+}
+
 function App() {
+  
   return (
     <div className="App">
       <header className="App-header">
