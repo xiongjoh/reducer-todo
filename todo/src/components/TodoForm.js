@@ -1,13 +1,36 @@
-import React from 'react'
+import React, { useState, useReducer } from 'react'
 
 export default function TodoForm(props) {
-    
+    const {dispatch, actions} = props
+    const [formValues, setFormValues] = useState('')
+
+    const onChange = (e) => {
+        setFormValues(e.target.value)
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+        dispatch(actions.addTodo(formValues))
+        setFormValues('')
+    }
+
+    const clearTodo = (e) => {
+        e.preventDefault()
+
+    }
+
     return (
-        <form>
+        <form onSubmit={onSubmit}>
             <label>
-                <input />
+                <input 
+                type='text'
+                name='todo item'
+                value={formValues}
+                onChange={onChange}
+                />
             </label>
             <button>Add Todo</button>
+            <button onClick={clearTodo} >Clear Todo</button>
         </form>
     )
 }

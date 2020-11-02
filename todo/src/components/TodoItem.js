@@ -1,9 +1,14 @@
 import React from 'react'
 
 const TodoItem = (props) => {
-    const { item } = props
+    const { itemId, item, completed, dispatch, actions } = props
+
+    const toggleCompleted = () => {
+        dispatch(actions.setCompleted(itemId))
+    }
+
     return (
-        <p>{item}</p>
+        <p onClick={toggleCompleted} className={completed ? 'complete' : ''}>{item}</p>
     )
 }
 
