@@ -1,30 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
 
-const initialState = {
-  item: 'Learn about reducers',
-  completed: false,
-  id: 3892987589,
-}
+import './App.css';
+import React, { useReducer } from 'react'
+
+import reducer, { initialState } from './reducers/appReducer'
+import TodoItem from './components/TodoItem'
+import TodoForm from './components/TodoForm'
 
 function App() {
+
+  const [state, dispatch] = useReducer(reducer, initialState)
   
+  console.log(state)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TodoForm/>
+      {state 
+      ? (state.map(item => <TodoItem key={item.id} item={item.item}/>)) 
+      : null}
     </div>
   );
 }
